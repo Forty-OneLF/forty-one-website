@@ -673,9 +673,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
           <div class="full"><label for="b-email">Email</label><input id="b-email" type="email" autocomplete="email"></div>
           <div class="full"><label for="b-msg">What's the project? (optional)</label><textarea id="b-msg" placeholder="e.g. Single-storey rear extension, CT5"></textarea></div>
         </div>
-        <div class="summary"><p id="bkSum">Choose a time to continue.</p><button class="btn bk-btn" id="bkGo" disabled>Confirm booking</button></div>
+        <div class="summary"><p id="bkSum">Choose a time to continue.</p><button class="btn bk-btn" id="bkGo" disabled>Request this time</button></div>
         <span class="bk-err" id="bkErr"></span>
-        <span class="note">Preview: times shown are examples until the calendar is connected.</span>
+        <span class="note">Pick a time that suits you and we'll confirm it by email or text, usually within a few hours.</span>
       </div>
     </div>
   </section>
@@ -693,7 +693,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
           <div class="det"><span class="label">Office</span><div class="row"><span class="v">Whitstable, Kent</span></div></div>
         </div>
       </div>
-      <form id="enq" novalidate>
+      <form id="enq" name="enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="enquiry">
+        <p hidden><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
         <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required><span class="err" id="e-name"></span></div>
         <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required><span class="err" id="e-email"></span></div>
         <div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
@@ -718,6 +720,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 </footer>
 
 <a class="wa" href="https://wa.me/447404611105?text=Hi%20Lewis%2C%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener" aria-label="Message Forty-One on WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.4-4.1A8 8 0 1 1 8.3 18.8L4 20z"/><path d="M9 9.5c.3 1.9 1.9 3.6 4 4.2l1-1 1.6.8-.4 1.3c-2.9.1-6.2-2.7-6.6-5.9l1.3-.5.8 1.5-1 1" stroke-width="1.4"/></svg><span>WhatsApp</span></a>
+
+<form name="call-request" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input name="name"><input name="email"><input name="phone"><input name="call_type"><input name="requested_time"><textarea name="project"></textarea><input name="bot-field">
+</form>
 
 <div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Project images">
   <div class="bar"><span id="lbCap"></span><div class="nav-btns"><button id="lbPrev">Prev</button><button id="lbNext">Next</button><button id="lbClose">Close</button></div></div>
@@ -773,7 +779,17 @@ document.addEventListener("keydown",e=>{ if(lb.hidden) return;
 const sheets=["dwg-plan","dwg-section","dwg-window","dwg-party"];
 document.querySelectorAll(".sheet .frame").forEach(f=>f.addEventListener("click",()=>openLb(sheets,"Technical drawings",+f.dataset.zoom)));
 
-// Booking planner (preview availability)
+// Send a form to Netlify Forms (works on the live site and the Netlify preview)
+const LIVE_HOST=/(^|\.)forty-onecd\.co\.uk$|\.netlify\.app$/.test(location.hostname);
+function sendForm(name,fields){
+  if(!LIVE_HOST) return Promise.resolve('preview');
+  const body=new URLSearchParams(Object.assign({'form-name':name},fields)).toString();
+  return fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body})
+    .then(r=>{ if(!r.ok) throw new Error(r.status); return 'sent'; });
+}
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+// Booking planner
 (function(){
   const daysEl=document.getElementById('days'), slotsEl=document.getElementById('slots'), sum=document.getElementById('bkSum'), go=document.getElementById('bkGo'), err=document.getElementById('bkErr');
   let mode='Phone call', day=null, time=null;
@@ -789,7 +805,7 @@ document.querySelectorAll(".sheet .frame").forEach(f=>f.addEventListener("click"
   function drawSlots(){
     slotsEl.innerHTML='';
     times.forEach((t,i)=>{ const b=document.createElement('button'); b.className='slot'; b.textContent=t; b.type='button';
-      const taken=seed(day,i)<4; b.disabled=taken; b.setAttribute('aria-pressed', t===time?'true':'false');
+      const taken=false; b.disabled=taken; b.setAttribute('aria-pressed', t===time?'true':'false');
       if(taken) b.setAttribute('aria-label',t+' unavailable');
       b.onclick=()=>{ time=t; slotsEl.querySelectorAll('.slot').forEach(s=>s.setAttribute('aria-pressed',s===b?'true':'false')); upd(); };
       slotsEl.appendChild(b); });
@@ -803,15 +819,18 @@ document.querySelectorAll(".sheet .frame").forEach(f=>f.addEventListener("click"
   day=days[0]; drawSlots(); upd();
   document.querySelectorAll('.opt').forEach(o=>o.onclick=()=>{ mode=o.dataset.mode; document.querySelectorAll('.opt').forEach(x=>x.setAttribute('aria-pressed',x===o?'true':'false')); upd(); });
   go.onclick=()=>{
-    const n=document.getElementById('b-name').value.trim(), e=document.getElementById('b-email').value.trim(), p=document.getElementById('b-phone').value.trim();
+    const n=document.getElementById('b-name').value.trim(), e=document.getElementById('b-email').value.trim(), p=document.getElementById('b-phone').value.trim(), msg=document.getElementById('b-msg').value.trim();
     if(!n){ err.textContent='Add your name so we know who we are speaking to.'; return; }
     if(!/^\S+@\S+\.\S+$/.test(e)){ err.textContent='Enter an email address for your confirmation.'; return; }
     if(mode!=='Microsoft Teams' && !p){ err.textContent='Add a mobile number so we can call you.'; return; }
-    err.textContent='';
-    const box=document.createElement('div'); box.className='bk-done';
-    const safe=s=>s.replace(/[<>&]/g,'');
-    box.innerHTML=`<span class="lbl" style="font-family:var(--f-mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--oak)">Booked</span><h3>${fmtLong(day)} at ${time}</h3><p>${mode}, 15 minutes. Thanks ${safe(n)}, a confirmation would be sent to ${safe(e)}.</p><span class="note">Preview: this booking hasn't been saved. Once the calendar is connected it will go straight into Lewis's diary.</span>`;
-    document.getElementById('planner').replaceChildren(box);
+    err.textContent=''; go.disabled=true; go.textContent='Sending…';
+    const when=fmtLong(day)+' at '+time;
+    sendForm('call-request',{name:n,email:e,phone:p,call_type:mode,requested_time:when,project:msg}).then(state=>{
+      const box=document.createElement('div'); box.className='bk-done';
+      box.innerHTML=`<span class="lbl" style="font-family:var(--f-mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--oak)">Request sent</span><h3>${esc(when)}</h3><p>${esc(mode)}, 15 minutes. Thanks ${esc(n)}. We'll confirm the time by email to ${esc(e)}, usually within a few hours.</p>`+
+        (state==='preview'?'<span class="note">Design preview: nothing was sent.</span>':'');
+      document.getElementById('planner').replaceChildren(box);
+    }).catch(()=>{ go.disabled=false; go.textContent='Request this time'; err.textContent="Sorry, that didn't send. Please try again, or call 07404 611105."; });
   };
 })();
 
@@ -828,20 +847,30 @@ document.querySelectorAll(".copy").forEach(b=>b.addEventListener("click",()=>{
   try{ navigator.clipboard.writeText(txt).then(ok,sel); }catch(e){ sel(); }
 }));
 
-// Enquiry form (preview: validates and confirms; live sending is wired up at hosting)
+// Enquiry form: validates, then emails the enquiry via Netlify Forms
 const form=document.getElementById("enq");
 form.addEventListener("submit",e=>{
   e.preventDefault();
-  const n=form.name.value.trim(), em=form.email.value.trim(), m=form.message.value.trim();
+  const F=form.elements, n=F["name"].value.trim(), em=F["email"].value.trim(), m=F["message"].value.trim();
   let bad=false;
   const set=(id,msg)=>{ document.getElementById(id).textContent=msg; if(msg) bad=true; };
   set("e-name", n ? "" : "Add your name so we know who to reply to.");
   set("e-email", /^\S+@\S+\.\S+$/.test(em) ? "" : "Enter an email address we can reply to.");
   set("e-msg", m ? "" : "Add a line or two about the project.");
   if(bad) return;
-  const d=document.createElement("div"); d.className="done";
-  d.innerHTML=`<h3>Thanks, ${n.replace(/[<>&]/g,"")}</h3><p>This is a preview of the site, so the enquiry hasn't been sent. On the live site it will go straight to enquiries@forty-onecd.co.uk.</p>`;
-  form.replaceChildren(d);
+  if(F["bot-field"].value) return;
+  const btn=form.querySelector('button[type="submit"]'); btn.disabled=true; btn.textContent="Sending…";
+  const fields={name:n,email:em,phone:F["phone"].value.trim(),postcode:F["postcode"].value.trim(),type:F["type"].value,stage:F["stage"].value,message:m};
+  sendForm("enquiry",fields).then(state=>{
+    const d=document.createElement("div"); d.className="done";
+    d.innerHTML= state==='preview'
+      ? `<h3>Thanks, ${esc(n)}</h3><p>This is the design preview, so nothing was sent. On the live site this goes straight to enquiries@forty-onecd.co.uk.</p>`
+      : `<h3>Thanks, ${esc(n)}</h3><p>Your enquiry has been sent. We'll reply to ${esc(em)}, usually within one working day.</p>`;
+    form.replaceChildren(d);
+  }).catch(()=>{
+    btn.disabled=false; btn.textContent="Send enquiry";
+    set("e-msg","Sorry, that didn't send. Please try again, or email enquiries@forty-onecd.co.uk.");
+  });
 });
 </script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
