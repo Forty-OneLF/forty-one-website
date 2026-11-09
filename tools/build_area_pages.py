@@ -111,7 +111,7 @@ AREAS = [
     "lead": "Ramsgate has some of the finest Regency and Victorian streets on the Kent coast, around the Royal Harbour and along the cliff tops. We design extensions, alterations and conversions that respect that character and handle the application with Thanet District Council.",
     "nearby": ["Royal Harbour", "Pegwell", "Newington", "Nethercourt", "Westwood", "Minster", "Cliffsend"],
     "planning": [
-      ("Conservation areas and Article 4", "Much of the town is in the Ramsgate, Royal Esplanade or Montefiore conservation areas. On parts of streets such as Nelson Crescent, Paragon, Albion Hill and Prospect Terrace, an Article 4 direction means even windows, doors and roof coverings need permission. We check your address first."),
+      ("Conservation areas and Article 4", "Much of the town is in the Ramsgate, Royal Esplanade or Montefiore conservation areas. On parts of streets such as Nelson Crescent, Paragon, Albion Hill and Prospect Terrace, an Article 4 direction removes the usual householder freedoms, so changes such as windows and doors can need permission. We check your address first."),
       ("Listed buildings", "Ramsgate has a large number of listed buildings, and works inside as well as outside need listed building consent. We prepare the heritage statement and detail the work so it's acceptable to the conservation officer."),
       ("HMOs and new homes", "An Article 4 direction across Thanet means a family house to small HMO change needs planning permission, and new homes pay a small coastal habitat contribution. Both are built into our applications."),
     ],
@@ -164,6 +164,108 @@ AREAS = [
     ],
     "project": None,
   },
+  {
+    "slug": "faversham",
+    "sources": [("Faversham Neighbourhood Plan", "https://news.swale.gov.uk/news/new-faversham-neighbourhood-plan"), ("Faversham Conservation Area Appraisal", "https://swale.gov.uk/__data/assets/pdf_file/0008/453905/Faversham_CA_Appraisal_Aug_2023_V3.1_AA_Final.pdf")],
+    "town": "Faversham",
+    "council": "Swale Borough Council",
+    "title": "Architectural Design & Planning Drawings in Faversham",
+    "desc": "Architectural design and planning drawings in Faversham: extensions, loft conversions, listed buildings, conservation area work and building regulations drawings. Free 15-minute call.",
+    "lead": "Faversham is one of the best-preserved historic towns in Kent, and that shapes almost every project here. We design extensions, alterations and new homes that respect it and take them through Swale Borough Council.",
+    "nearby": ["Ospringe", "Davington", "Oare", "Preston", "Goodnestone", "Graveney", "Boughton under Blean", "Selling"],
+    "planning": [
+      ("Listed buildings and the conservation area", "The town has around 350 listed buildings, and the centre has been a conservation area since 1971, with an Article 4 direction removing some householder freedoms. Expect listed building consent and careful detailing for many town-centre projects."),
+      ("Faversham Neighbourhood Plan", "A new neighbourhood plan was made in December 2024 and replaces the old Faversham Creek plan. It carries weight in decisions, so we show how a design meets its policies."),
+      ("New homes near the marshes", "New homes within reach of the North Kent Marshes pay a per-home contribution towards protecting wintering birds. We include it in the application so it doesn't delay validation."),
+    ],
+    "faq": [
+      ("Do I need listed building consent in Faversham?", "If the building is listed, yes, for most work affecting its character, inside or out. We check the listing and prepare the drawings and heritage statement the council needs."),
+      ("Can I extend a house in the Faversham conservation area?", "Usually, but design and materials matter more, and some changes that are normally permitted development need permission here. We'll set out what's realistic on the free call."),
+      ("Which council handles Faversham applications?", "Swale Borough Council. We submit through the Planning Portal and deal with the case officer until a decision."),
+    ],
+    "project": None,
+  },
+  {
+    "slug": "sittingbourne",
+    "town": "Sittingbourne",
+    "council": "Swale Borough Council",
+    "title": "Architectural Design & Planning Drawings in Sittingbourne",
+    "desc": "Architectural design and planning drawings in Sittingbourne: house extensions, loft conversions, HMOs, new homes and building regulations drawings. Free 15-minute call.",
+    "lead": "Sittingbourne is growing fast, and many homeowners are extending rather than moving. We design extensions, loft conversions and new homes across the town and handle the application with Swale Borough Council.",
+    "nearby": ["Milton Regis", "Kemsley", "Murston", "Bapchild", "Borden", "Tunstall", "Bobbing", "Iwade", "Isle of Sheppey"],
+    "planning": [
+      ("Swale's extension guidance", "Swale has its own householder guide on extension size, roof shapes and protecting neighbours. Designing to it from the start avoids the most common reasons for refusal here."),
+      ("HMOs across the borough", "Swale made a borough-wide Article 4 direction in 2026, so turning a family house into a small HMO needs planning permission, judged against a new HMO planning document."),
+      ("Historic centres", "The High Street and Milton Regis are both conservation areas, where alterations need more care with materials and frontage design."),
+    ],
+    "faq": [
+      ("Do I need planning permission for an extension in Sittingbourne?", "Many single-storey rear extensions and loft conversions are permitted development, but not all. We'll tell you which route your project needs, and a Lawful Development Certificate can confirm it."),
+      ("Can I turn my house into an HMO in Sittingbourne?", "You now need planning permission even for a small HMO, because of the borough-wide Article 4 direction. We prepare the application and layout to meet the council's HMO standards."),
+      ("Which council handles Sittingbourne applications?", "Swale Borough Council, which also covers Faversham and the Isle of Sheppey."),
+    ],
+    "project": None,
+  },
+  {
+    "slug": "chatham",
+    "sources": [("Arches Neighbourhood Plan referendum", "https://democracy.medway.gov.uk/mgconvert2pdf.aspx?id=73901")],
+    "town": "Chatham",
+    "council": "Medway Council",
+    "title": "Architectural Design & Planning Drawings in Chatham",
+    "desc": "Architectural design and planning drawings in Chatham: extensions, loft conversions, flat and HMO conversions, building regulations drawings. Free 15-minute call.",
+    "lead": "Chatham's terraces and Victorian villas suit extensions, loft conversions and conversions, but Medway has firm rules on flats and HMOs. We design to them and handle the application with Medway Council.",
+    "nearby": ["Luton", "Brompton", "Walderslade", "Lordswood", "Princes Park", "Wayfield", "Rochester", "Gillingham"],
+    "planning": [
+      ("Flats and HMOs", "Medway has specific policies on converting houses to flats, and an Article 4 direction means small HMOs need planning permission in wards including Chatham Central & Brompton, Fort Pitt, Luton and Watling. We check your address before you buy or spend on drawings."),
+      ("Dockyard and Brompton", "The Historic Dockyard, Brompton Lines and parts of central Chatham are conservation areas, some with Article 4 directions that remove the usual householder freedoms, so check before changing windows, doors or roofs."),
+      ("Neighbourhood plan and new homes", "Part of Chatham is covered by the Arches Neighbourhood Plan, approved at referendum in 2024. New homes near the estuary also pay a per-home contribution towards protecting the North Kent Marshes."),
+    ],
+    "faq": [
+      ("Can I convert a house into flats in Chatham?", "Sometimes. Medway's flat conversion policy looks at the size of the house, the flats created, parking and amenity space. We'll give you a straight view before you commit."),
+      ("Do I need permission for an HMO in Chatham?", "In the Article 4 wards, yes, even for a small HMO. Elsewhere a small HMO may be permitted development. We'll check which applies."),
+      ("Which council handles Chatham applications?", "Medway Council, which covers Chatham, Rochester, Gillingham, Strood and Rainham."),
+    ],
+    "project": None,
+  },
+  {
+    "slug": "rochester",
+    "town": "Rochester",
+    "council": "Medway Council",
+    "title": "Architectural Design & Planning Drawings in Rochester",
+    "desc": "Architectural design and planning drawings in Rochester: extensions, listed buildings, conservation areas, flat conversions and building regulations drawings. Free 15-minute call.",
+    "lead": "Historic Rochester, with the castle, the cathedral and the High Street, is one of Kent's most sensitive places to build. We design extensions and alterations that respect it and handle planning and listed building consent with Medway Council.",
+    "nearby": ["Strood", "Frindsbury", "Borstal", "Wainscott", "Cuxton", "Rochester Riverside", "Chatham"],
+    "planning": [
+      ("Historic Rochester", "The city centre, Star Hill to Sun Pier and New Road are conservation areas, and Historic Rochester has an Article 4 direction that removes the usual householder freedoms. Many buildings are also listed."),
+      ("Backland and infill homes", "Medway has a specific policy for new homes built behind or beside existing houses, covering access, overlooking and the size of plots and gardens. We test these early with a site layout."),
+      ("Flats and HMOs", "Converting houses to flats is judged against Medway's flat conversion policy, and an Article 4 direction requires permission for small HMOs in wards including Strood North & Frindsbury."),
+    ],
+    "faq": [
+      ("Do I need permission to replace windows in Rochester?", "In Historic Rochester it may, because of the Article 4 direction, and it always does for a listed building. We'll check your property first."),
+      ("Can you help with a listed building in Rochester?", "Yes. We survey, draw and prepare the heritage statement, and apply for listed building consent and planning together where both are needed."),
+      ("Can I build a house in my garden in Rochester?", "Possibly, if access, plot size and neighbours' privacy work. Medway's backland policy sets the tests, and we'll check them before full drawings."),
+    ],
+    "project": None,
+  },
+  {
+    "slug": "gillingham",
+    "town": "Gillingham",
+    "council": "Medway Council",
+    "title": "Architectural Design & Planning Drawings in Gillingham",
+    "desc": "Architectural design and planning drawings in Gillingham and Rainham: rear extensions, loft conversions, HMOs, flats and building regulations drawings. Free 15-minute call.",
+    "lead": "Gillingham's Victorian and Edwardian terraces are ideal for rear extensions and loft conversions. We design them to work for growing families and handle the application with Medway Council.",
+    "nearby": ["Rainham", "Twydall", "Hempstead", "Wigmore", "Parkwood", "Brompton", "Chatham"],
+    "planning": [
+      ("Terraces, lofts and rear extensions", "Most terraced lofts and single-storey rear extensions can use permitted development, but neighbour consultation and size limits still apply. We confirm the route and, where useful, secure a Lawful Development Certificate."),
+      ("HMOs in Gillingham North and South", "An Article 4 direction confirmed in 2026 means converting a house to a small HMO needs planning permission in Gillingham North and Gillingham South wards, among others."),
+      ("Conservation areas", "Gillingham Green and Gillingham Park are conservation areas, and Gillingham Park also has an Article 4 direction, so some normally permitted changes need permission there."),
+    ],
+    "faq": [
+      ("Do I need planning permission for a loft conversion in Gillingham?", "Usually not for a typical rear dormer on a terraced or semi-detached house, unless it's in a conservation area or permitted development rights have been removed. We'll confirm on the free call."),
+      ("Can I turn my house into an HMO in Gillingham?", "In Gillingham North and South you need planning permission even for a small HMO. We prepare the application and layouts to Medway's standards."),
+      ("Which council handles Gillingham applications?", "Medway Council. We submit and deal with the case officer until a decision."),
+    ],
+    "project": None,
+  },
 ]
 
 # Council-level planning context, shown on every town page for that council.
@@ -200,6 +302,41 @@ COUNCILS = {
       ("New Local Plan timetable", "https://www.thanet.gov.uk/timetable-published-in-preparation-for-a-new-local-plan-2/"),
       ("Thanet conservation areas", "https://www.thanet.gov.uk/info-pages/conservation-area/"),
       ("Thanet HMO Article 4", "https://democracy.thanet.gov.uk/ieDecisionDetails.aspx?AIId=10021"),
+    ],
+  },
+  "Swale Borough Council": {
+    "plan": "Applications are decided under Bearing Fruits 2031, the Swale Local Plan (adopted 2017). A replacement plan has finished its final public consultation and is due to go to examination, so the 2017 policies still apply for now.",
+    "policies": [
+      ("CP 4 Requiring good design", "The main design test for extensions and new homes."),
+      ("DM 14 General development criteria", "Covers effects on neighbours, the street and highway safety."),
+      ("Designing an Extension – A Guide for Householders", "Swale's own guidance on extension size, roof form and protecting neighbours."),
+      ("DM 32 and DM 33 Listed buildings and conservation areas", "Work affecting listed buildings or conservation areas must protect their character."),
+      ("Houses in Multiple Occupation SPD (2026)", "Sets out how HMO applications are judged, alongside a borough-wide Article 4 direction made in 2026."),
+    ],
+    "sources": [
+      ("Swale Local Plan", "https://swale.gov.uk/local-plan-for-swale/"),
+      ("Local Plan Review consultation", "https://swale.gov.uk/your-council/consultations/local-plan-publication-draft-consultation-regulation-19"),
+      ("Designing an Extension guide", "https://swale.gov.uk/news-and-your-council/publications/planning-and-planning-policy/designing-an-extension-a-guide-for-householders"),
+      ("HMO Article 4 direction", "https://swale.gov.uk/your-council/consultations/article-4-direction-affecting-houses-in-multiple-occupation-approval"),
+      ("Coastal habitat contributions (SAMMS)", "https://swale.gov.uk/news-and-your-council/publications/planning-and-planning-policy/strategic-access-management-and-monitoring-strategy-samms"),
+    ],
+  },
+  "Medway Council": {
+    "plan": "Applications are still decided under the Medway Local Plan (2003). Its replacement, the Medway Local Plan 2041, is being examined by a government inspector, and its draft policies are starting to carry weight.",
+    "policies": [
+      ("BNE1 General Principles for Built Development", "The main design test, used for extensions as Medway has no separate extensions policy."),
+      ("BNE2 Amenity Protection", "Protects neighbours' light, outlook and privacy."),
+      ("H6 Flat Conversions", "Sets the tests for converting houses into flats."),
+      ("H7 Multiple Occupation", "Controls HMOs, alongside an Article 4 direction in seven wards."),
+      ("H9 Backland and Tandem Development", "Applies to new homes built behind or beside existing houses."),
+      ("BNE12–BNE18 Conservation areas and listed buildings", "Protect the character of Medway's historic areas and buildings."),
+    ],
+    "sources": [
+      ("Medway Local Plan 2041 roadmap", "https://www.medway.gov.uk/info/200542/medway_local_plan_2041/1824/roadmap_to_delivering_our_new_local_plan"),
+      ("Medway Local Plan 2003", "https://www.medway.gov.uk/download/downloads/id/2400/medway_local_plan_2003.pdf"),
+      ("HMO Article 4 wards", "https://democracy.medway.gov.uk/ieIssueDetails.aspx?IId=42771"),
+      ("Article 4 directions", "https://www.medway.gov.uk/info/200147/applying_for_planning_permission/553/article_4_directions/2"),
+      ("Current planning policies", "https://www.medway.gov.uk/info/200149/planning_policy/146/current_planning_policies/5"),
     ],
   },
 }
@@ -384,7 +521,22 @@ def page(a):
 """
 
 
+def update_homepage_links():
+    import re
+    p = os.path.join(ROOT, "index.html")
+    h = open(p, encoding="utf-8").read()
+    links = [f'<a href="/architectural-design-{a["slug"]}/">{a["town"]}</a>' for a in AREAS]
+    h = re.sub(r"<span>Areas: .*?</span>", "<span>Areas: " + " · ".join(links) + "</span>", h, count=1, flags=re.S)
+    h = re.sub(r"work across Kent and London, including .*?\. If you", "work across Kent and London, including " + ", ".join(links[:-1]) + " and " + links[-1] + ". If you", h, count=1, flags=re.S)
+    m = re.search(r'<script type="application/ld\+json">(.*?)</script>', h)
+    d = json.loads(m.group(1))
+    d["areaServed"] = [{"@type": "AdministrativeArea", "name": n} for n in ["Kent", "London"] + [a["town"] for a in AREAS]]
+    h = h.replace(m.group(1), json.dumps(d))
+    open(p, "w", encoding="utf-8").write(h)
+
+
 def main():
+    update_homepage_links()
     urls = [f"{SITE}/"]
     for a in AREAS:
         d = os.path.join(ROOT, f"architectural-design-{a['slug']}")
