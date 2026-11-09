@@ -12,18 +12,17 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap">
-<style>:root{--paper:#F1F1EE;--sheet:#FBFBF9;--ink:#17191B;--muted:#5C5F5C;--line:#CDCBC4;--oak:#94663A;--wrap:1040px;color-scheme:light}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--paper:#111213;--sheet:#1F2021;--ink:#ECEAE5;--muted:#A2A09A;--line:#2F3031;--oak:#C99663;color-scheme:dark}}
+<style>:root{--paper:#F1F1EE;--sheet:#FBFBF9;--ink:#17191B;--muted:#5C5F5C;--line:#CDCBC4;--oak:#94663A;--on-brand:#FFFFFF;--wrap:1040px;--f-display:"Montserrat","Helvetica Neue",Arial,sans-serif;--f-mono:"Montserrat","Helvetica Neue",Arial,sans-serif;--f-body:"Montserrat","Helvetica Neue",Arial,sans-serif;color-scheme:light}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--paper:#111213;--sheet:#1F2021;--ink:#ECEAE5;--muted:#A2A09A;--line:#2F3031;--oak:#C99663;--on-brand:#111213;color-scheme:dark}}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:"Montserrat","Helvetica Neue",Arial,sans-serif;font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
 a{color:inherit}img{display:block;max-width:100%;height:auto}
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 16px}
-.top{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:64px}
-.mark{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;letter-spacing:.06em;font-size:14px}
-.mark img{width:30px;height:30px}.mark span{display:flex;flex-direction:column;line-height:1.15}.mark small{font-weight:500;font-size:10px;letter-spacing:.14em;color:var(--muted)}
-.cta{display:inline-block;background:var(--ink);color:var(--paper);text-decoration:none;font-weight:600;font-size:14px;padding:11px 18px;border-radius:2px}
-.cta.alt{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+.cta{display:inline-block;background:var(--oak);color:var(--on-brand);border:1px solid var(--oak);text-decoration:none;font-weight:500;font-size:14px;padding:10px 18px;border-radius:2px}.cta:hover{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.hnav{display:flex;align-items:center;gap:28px}.hnav a:not(.cta){text-decoration:none;font-size:14px;font-weight:500}.hnav a:not(.cta):hover{color:var(--oak)}
+@media (max-width:860px){.hnav a:not(.cta){display:none}}
+.top .wrap{max-width:1240px}
+.cta.alt{background:transparent;color:var(--ink);border:1px solid var(--ink)}.cta.alt:hover{color:var(--paper)}
 .label{font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 h1,h2,h3{font-weight:600;line-height:1.12;margin:0;letter-spacing:-.01em;text-wrap:balance}
 h1{font-size:clamp(30px,5vw,48px);margin:12px 0 18px}h2{font-size:clamp(23px,3vw,30px);margin:8px 0 18px}h3{font-size:17px;margin:0 0 6px}
@@ -37,8 +36,18 @@ figure{margin:0}figcaption{font-size:13px;color:var(--muted);margin-top:8px}
 blockquote{margin:22px 0 0;padding-left:16px;border-left:3px solid var(--oak);font-size:17px;max-width:62ch}blockquote cite{display:block;font-style:normal;font-size:13px;color:var(--muted);margin-top:8px}
 details{border-top:1px solid var(--line);padding:14px 0}details:last-child{border-bottom:1px solid var(--line)}summary{cursor:pointer;font-weight:600}details p{margin:10px 0 0;max-width:68ch}
 footer{background:var(--ink);color:color-mix(in srgb,var(--paper) 72%,transparent);font-size:13px;padding:28px 0 40px}footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
-@media (max-width:560px){.top .cta{padding:9px 12px;font-size:13px}}
-</style>
+@media (max-width:560px){.top .cta{padding:8px 12px;font-size:13px}}
+
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.mark{display:flex;align-items:center;gap:12px;text-decoration:none;line-height:1}
+.mark .logo{width:40px;height:40px;flex:none;color:var(--oak)}
+.mark .wm{display:flex;flex-direction:column}
+.mark .wm span.grp{font-family:var(--f-mono);font-weight:400;font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:5px;opacity:.85}
+@media (max-width:480px){ .mark .wm span.grp{display:none} }
+@media (max-width:380px){ .mark .wm span{font-family:var(--f-display);font-size:9.5px;font-weight:600;letter-spacing:.28em;color:var(--oak);margin-top:6px} }
+.mark b{font-family:var(--f-display);font-weight:500;font-size:19px;letter-spacing:.28em;margin-right:-.28em}
+.mark .wm span{font-family:var(--f-display);font-size:9.5px;font-weight:600;letter-spacing:.3em;color:var(--muted);margin-top:6px}</style>
 <script type="application/ld+json">[
  {
   "@context": "https://schema.org",
@@ -155,8 +164,8 @@ footer{background:var(--ink);color:color-mix(in srgb,var(--paper) 72%,transparen
 </head>
 <body>
 <header class="top"><div class="wrap">
-<a class="mark" href="/"><img src="/forty-one-logo.svg" alt="" width="30" height="30"><span>FORTY-ONE<small>ARCHITECTURE</small></span></a>
-<a class="cta" href="/#book">Book a free call</a>
+<a class="mark" href="/" aria-label="Forty-One Architecture, home"><svg class="logo" viewBox="0 0 1186 1187" aria-hidden="true" focusable="false"><path fill="currentColor" d="M560 1182C557 1182 550 1182 542 1181C524 1179 503 1176 485 1173L470 1170L467 1168L465 1166L465 1026L465 887L467 885L470 883L536 883L603 883L605 880L608 877L608 794L608 710L605 708L602 705L536 705L470 705L468 703L465 701L465 596L465 492L462 489L460 486L371 486L281 486L278 489L275 493L275 597L275 701L273 703L270 705L141 705L11 705L10 703C8 701 4 684 4 678L4 674L10 663C17 652 32 627 41 613C44 609 51 597 58 586C64 576 71 565 72 562C74 560 87 539 101 516C116 493 130 470 133 466C136 461 144 448 150 438C157 427 164 415 167 411C172 404 208 345 229 312C235 303 244 288 250 279C256 270 262 259 265 255C268 251 274 241 280 232C285 223 291 213 294 209C302 197 319 170 328 154C333 147 341 135 344 129C348 123 356 111 361 104C365 96 372 85 376 79C380 73 387 62 392 54C396 47 401 39 403 38L405 35L416 32C490 7 574 -1 652 8L665 9L667 11L669 12L669 94L669 176L671 177L673 179L788 179L902 180L905 182L907 185L907 638L906 1090L901 1094C878 1110 825 1136 786 1149C735 1166 696 1175 643 1181L628 1182L596 1182C578 1183 562 1183 560 1182ZM258 1079C191 1034 132 972 90 901L81 886L83 884L84 882L178 882L273 882L274 884L276 886L276 986L276 1086L274 1087L272 1089L258 1079ZM1095 884L1093 882L1093 592L1093 301L1095 300L1097 298L1099 300C1100 301 1104 308 1107 314C1171 428 1195 569 1173 695C1162 758 1133 833 1102 879C1097 886 1097 886 1095 884Z"/></svg><span class="wm"><b>FORTY-ONE</b><span>ARCHITECTURE</span><span class="grp">Part of the Forty-One Group</span></span></a>
+<nav class="hnav"><a href="/#services">Services</a><a href="/#work">Work</a><a href="/#about">About</a><a href="/#contact">Contact</a><a class="cta" href="/#book">Book a free call</a></nav>
 </div></header>
 <main>
 <section><div class="wrap">
@@ -194,6 +203,6 @@ footer{background:var(--ink);color:color-mix(in srgb,var(--paper) 72%,transparen
 <div class="btns"><a class="cta" href="/#book">Book a free call</a><a class="cta alt" href="/#contact">Send an enquiry</a></div>
 </div></section>
 </main>
-<footer><div class="wrap"><span><b>Forty-One Architecture</b> · Part of the Forty-One Group · Whitstable, Kent · 07404 611105</span><span>A trading name of Forty-One Consult and Design Ltd · Company no. 16366675 · <a href="/privacy.html">Privacy notice</a></span></div></footer>
+<footer><div class="wrap"><span><b style="color:var(--paper);font-weight:600">Forty-One Architecture</b> · Part of the Forty-One Group · Whitstable, Kent · 07404 611105</span><span>A trading name of Forty-One Consult and Design Ltd · Company no. 16366675 · <a href="/privacy.html">Privacy notice</a></span></div></footer>
 </body>
 </html>

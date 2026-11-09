@@ -167,18 +167,17 @@ SERVICES = [
   ("Change of use and HMOs", "Office, retail and house conversions, including prior approval."),
 ]
 
-CSS = """:root{--paper:#F1F1EE;--sheet:#FBFBF9;--ink:#17191B;--muted:#5C5F5C;--line:#CDCBC4;--oak:#94663A;--wrap:1040px;color-scheme:light}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--paper:#111213;--sheet:#1F2021;--ink:#ECEAE5;--muted:#A2A09A;--line:#2F3031;--oak:#C99663;color-scheme:dark}}
+CSS = """:root{--paper:#F1F1EE;--sheet:#FBFBF9;--ink:#17191B;--muted:#5C5F5C;--line:#CDCBC4;--oak:#94663A;--on-brand:#FFFFFF;--wrap:1040px;--f-display:"Montserrat","Helvetica Neue",Arial,sans-serif;--f-mono:"Montserrat","Helvetica Neue",Arial,sans-serif;--f-body:"Montserrat","Helvetica Neue",Arial,sans-serif;color-scheme:light}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--paper:#111213;--sheet:#1F2021;--ink:#ECEAE5;--muted:#A2A09A;--line:#2F3031;--oak:#C99663;--on-brand:#111213;color-scheme:dark}}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:"Montserrat","Helvetica Neue",Arial,sans-serif;font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
 a{color:inherit}img{display:block;max-width:100%;height:auto}
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 16px}
-.top{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:64px}
-.mark{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;letter-spacing:.06em;font-size:14px}
-.mark img{width:30px;height:30px}.mark span{display:flex;flex-direction:column;line-height:1.15}.mark small{font-weight:500;font-size:10px;letter-spacing:.14em;color:var(--muted)}
-.cta{display:inline-block;background:var(--ink);color:var(--paper);text-decoration:none;font-weight:600;font-size:14px;padding:11px 18px;border-radius:2px}
-.cta.alt{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+.cta{display:inline-block;background:var(--oak);color:var(--on-brand);border:1px solid var(--oak);text-decoration:none;font-weight:500;font-size:14px;padding:10px 18px;border-radius:2px}.cta:hover{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.hnav{display:flex;align-items:center;gap:28px}.hnav a:not(.cta){text-decoration:none;font-size:14px;font-weight:500}.hnav a:not(.cta):hover{color:var(--oak)}
+@media (max-width:860px){.hnav a:not(.cta){display:none}}
+.top .wrap{max-width:1240px}
+.cta.alt{background:transparent;color:var(--ink);border:1px solid var(--ink)}.cta.alt:hover{color:var(--paper)}
 .label{font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 h1,h2,h3{font-weight:600;line-height:1.12;margin:0;letter-spacing:-.01em;text-wrap:balance}
 h1{font-size:clamp(30px,5vw,48px);margin:12px 0 18px}h2{font-size:clamp(23px,3vw,30px);margin:8px 0 18px}h3{font-size:17px;margin:0 0 6px}
@@ -192,8 +191,17 @@ figure{margin:0}figcaption{font-size:13px;color:var(--muted);margin-top:8px}
 blockquote{margin:22px 0 0;padding-left:16px;border-left:3px solid var(--oak);font-size:17px;max-width:62ch}blockquote cite{display:block;font-style:normal;font-size:13px;color:var(--muted);margin-top:8px}
 details{border-top:1px solid var(--line);padding:14px 0}details:last-child{border-bottom:1px solid var(--line)}summary{cursor:pointer;font-weight:600}details p{margin:10px 0 0;max-width:68ch}
 footer{background:var(--ink);color:color-mix(in srgb,var(--paper) 72%,transparent);font-size:13px;padding:28px 0 40px}footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
-@media (max-width:560px){.top .cta{padding:9px 12px;font-size:13px}}
+@media (max-width:560px){.top .cta{padding:8px 12px;font-size:13px}}
 """
+
+
+def homepage_header():
+    """Logo markup and header CSS copied from index.html, so town pages always match the homepage."""
+    import re
+    idx = open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
+    mark = re.search(r'<a class="mark".*?</a>', idx, re.S).group(0).replace('href="#home"', 'href="/"')
+    css = "\n".join(l for l in idx.splitlines() if re.match(r'\s*(@media[^{]*\{\s*)?\.(top|mark)\b', l))
+    return mark, css
 
 
 def esc(s):
@@ -240,6 +248,7 @@ def schema(a):
 
 
 def page(a):
+    MARK, HEADER_CSS = homepage_header()
     t = a["town"]
     url = f"{SITE}/architectural-design-{a['slug']}/"
     services = "".join(f'<div class="card"><h3>{esc(n)}</h3><p>{esc(d)}</p></div>' for n, d in SERVICES)
@@ -269,13 +278,14 @@ def page(a):
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap">
-<style>{CSS}</style>
+<style>{CSS}
+{HEADER_CSS}</style>
 <script type="application/ld+json">{schema(a)}</script>
 </head>
 <body>
 <header class="top"><div class="wrap">
-<a class="mark" href="/"><img src="/forty-one-logo.svg" alt="" width="30" height="30"><span>FORTY-ONE<small>ARCHITECTURE</small></span></a>
-<a class="cta" href="/#book">Book a free call</a>
+{MARK}
+<nav class="hnav"><a href="/#services">Services</a><a href="/#work">Work</a><a href="/#about">About</a><a href="/#contact">Contact</a><a class="cta" href="/#book">Book a free call</a></nav>
 </div></header>
 <main>
 <section><div class="wrap">
@@ -313,7 +323,7 @@ def page(a):
 <div class="btns"><a class="cta" href="/#book">Book a free call</a><a class="cta alt" href="/#contact">Send an enquiry</a></div>
 </div></section>
 </main>
-<footer><div class="wrap"><span><b>Forty-One Architecture</b> · Part of the Forty-One Group · Whitstable, Kent · {PHONE}</span><span>A trading name of Forty-One Consult and Design Ltd · Company no. 16366675 · <a href="/privacy.html">Privacy notice</a></span></div></footer>
+<footer><div class="wrap"><span><b style="color:var(--paper);font-weight:600">Forty-One Architecture</b> · Part of the Forty-One Group · Whitstable, Kent · {PHONE}</span><span>A trading name of Forty-One Consult and Design Ltd · Company no. 16366675 · <a href="/privacy.html">Privacy notice</a></span></div></footer>
 </body>
 </html>
 """
