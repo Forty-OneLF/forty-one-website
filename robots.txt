@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /forms.html
+Sitemap: https://forty-onecd.co.uk/sitemap.xml
