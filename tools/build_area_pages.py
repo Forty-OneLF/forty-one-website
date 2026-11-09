@@ -40,6 +40,7 @@ AREAS = [
   },
   {
     "slug": "herne-bay",
+    "sources": [('Stodmarsh water quality rules', 'https://www.canterbury.gov.uk/planning-and-building/how-planning-applications-are-affected-stodmarsh-water-quality')],
     "town": "Herne Bay",
     "council": "Canterbury City Council",
     "title": "Architectural Design & Planning Drawings in Herne Bay",
@@ -61,6 +62,7 @@ AREAS = [
   },
   {
     "slug": "canterbury",
+    "sources": [('Stodmarsh water quality rules', 'https://www.canterbury.gov.uk/planning-and-building/how-planning-applications-are-affected-stodmarsh-water-quality')],
     "town": "Canterbury",
     "council": "Canterbury City Council",
     "title": "Architectural Design & Planning Drawings in Canterbury",
@@ -81,6 +83,7 @@ AREAS = [
   },
   {
     "slug": "margate",
+    "sources": [('Cliftonville Development Plan Document', 'https://www.thanet.gov.uk/wp-content/uploads/2018/03/Cliftonville_DPD_03_2010.pdf')],
     "town": "Margate",
     "council": "Thanet District Council",
     "title": "Architectural Design & Planning Drawings in Margate",
@@ -89,7 +92,7 @@ AREAS = [
     "nearby": ["Cliftonville", "Westbrook", "Garlinge", "Northdown", "Palm Bay", "Westgate-on-Sea", "Westwood"],
     "planning": [
       ("Conservation areas", "The old town, the seafront and much of Cliftonville sit in conservation areas, including Dalby Square, Ethelbert Road and Northdown Road. Windows, roofs, front boundaries and extensions visible from the street get extra scrutiny, so we design with that in mind from the outset."),
-      ("Flats and HMOs", "An Article 4 direction covers the whole of Thanet, so turning a family house into a small HMO needs planning permission. Council policy also looks hard at sub-dividing houses into flats in parts of Margate and Cliftonville. We check what's realistic before you buy or spend on drawings."),
+      ("Flats and HMOs", "An Article 4 direction covers the whole of Thanet, so turning a family house into a small HMO needs planning permission. In Cliftonville, a specific policy resists splitting houses last used as family homes into flats, and new HMOs aren't permitted in mapped parts of Cliftonville and Margate Central. We check what's realistic before you buy or spend on drawings."),
       ("New homes near the coast", "New homes in Thanet pay a small per-bedroom contribution to protect the Thanet Coast's wintering birds. We include it in the application so it doesn't hold up validation."),
     ],
     "faq": [
@@ -121,6 +124,7 @@ AREAS = [
   },
   {
     "slug": "broadstairs",
+    "sources": [("Broadstairs & St Peter's Neighbourhood Plan", 'https://www.broadstairs.gov.uk/?p=154')],
     "town": "Broadstairs",
     "council": "Thanet District Council",
     "title": "Architectural Design & Planning Drawings in Broadstairs",
@@ -141,6 +145,7 @@ AREAS = [
   },
   {
     "slug": "birchington",
+    "sources": [('Thanet neighbourhood plans', 'https://www.thanet.gov.uk/info-pages/local-plan-updates/'), ('Birchington Conservation Area Appraisal', 'https://www.thanet.gov.uk/?p=38692')],
     "town": "Birchington",
     "council": "Thanet District Council",
     "title": "Architectural Design & Planning Drawings in Birchington",
@@ -149,7 +154,7 @@ AREAS = [
     "nearby": ["Minnis Bay", "Westgate-on-Sea", "Acol", "St Nicholas at Wade", "Epple Bay", "Margate"],
     "planning": [
       ("Bungalows and dormers", "Adding a first floor or large dormers to a bungalow is the most common project here. Officers look at the effect on the street and on neighbours' light and privacy, so we test the massing early and show it in 3D before you commit."),
-      ("Birchington conservation area", "The village centre is a conservation area with a recently adopted appraisal. Extensions and alterations there need more care with materials and visibility."),
+      ("Conservation area and neighbourhood plan", "The village centre is a conservation area with a recently adopted appraisal, and Birchington has its own neighbourhood plan (2023), which the council must take into account. Both shape what is acceptable on materials, scale and visibility."),
       ("Porches, outbuildings and permitted development", "Many porches and garden rooms need no planning permission if they stay within size and height limits, and a Lawful Development Certificate can confirm it. We'll tell you which side of the line your plans fall."),
     ],
     "faq": [
@@ -160,6 +165,44 @@ AREAS = [
     "project": None,
   },
 ]
+
+# Council-level planning context, shown on every town page for that council.
+# Each fact must come from a source listed here. The monthly check re-reads these sources.
+COUNCILS = {
+  "Canterbury City Council": {
+    "plan": "Applications are decided under the Canterbury District Local Plan (adopted 2017). A replacement plan has been through its final public consultation but is not yet adopted, so the 2017 policies still apply.",
+    "policies": [
+      ("DBE3 Principles of Design", "The main design test for all new building, including new homes on garden or infill plots."),
+      ("DBE6 Alterations and Extensions", "Extensions must suit the original house and street and avoid harming neighbours' light, outlook and privacy."),
+      ("DBE4 Residential Space Standards", "New homes and flats must meet national minimum room and floor-area sizes."),
+      ("HD6 Housing in Multiple Occupation", "Controls new HMOs, alongside the Article 4 direction area mapped in the plan."),
+      ("HE6 and HE8 Conservation Areas", "Development in or near a conservation area must preserve or enhance its character."),
+      ("HE4 and HE5 Listed Buildings", "Changes to listed buildings and their settings need to protect their special interest."),
+    ],
+    "sources": [
+      ("Canterbury adopted Local Plan", "https://www.canterbury.gov.uk/planning-and-building/planning-policies/adopted-local-plan"),
+      ("Draft Local Plan consultation", "https://haveyoursay.canterbury.gov.uk/draft-canterbury-district-local-plan-regulation-19-consultation"),
+      ("Coastal habitat contributions", "https://www.canterbury.gov.uk/planning-and-building/planning-obligations/planning-obligations-special-protection-areas-samms"),
+    ],
+  },
+  "Thanet District Council": {
+    "plan": "Applications are decided under the Thanet Local Plan (adopted 2020) and, in Cliftonville, the Cliftonville Development Plan Document (2010). Work on a replacement plan has only just started.",
+    "policies": [
+      ("QD02 General Design Principles", "The main design test, covering extensions and new homes, including building on garden land where it isn't harmful to the area."),
+      ("QD03 Living Conditions", "Protects neighbours' light, outlook and privacy, and sets the living standards for new homes."),
+      ("HO19 Houses in Multiple Occupation", "New HMOs are not permitted in the mapped parts of Cliftonville and Margate Central."),
+      ("HO8 Cliftonville West and Margate Central", "Area policy aimed at improving housing quality in these wards."),
+      ("HE02 Development in Conservation Areas", "Development must preserve or enhance the conservation area's character."),
+      ("Kent Design Guide", "Adopted county-wide design guidance that the council also uses."),
+    ],
+    "sources": [
+      ("Thanet Local Plan 2020", "https://www.thanet.gov.uk/info-pages/local-plan-updates/"),
+      ("New Local Plan timetable", "https://www.thanet.gov.uk/timetable-published-in-preparation-for-a-new-local-plan-2/"),
+      ("Thanet conservation areas", "https://www.thanet.gov.uk/info-pages/conservation-area/"),
+      ("Thanet HMO Article 4", "https://democracy.thanet.gov.uk/ieDecisionDetails.aspx?AIId=10021"),
+    ],
+  },
+}
 
 SERVICES = [
   ("House extensions", "Single and double-storey, side, rear and wraparound."),
