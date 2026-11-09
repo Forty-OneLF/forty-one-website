@@ -76,6 +76,86 @@ AREAS = [
     ],
     "project": {"img": "stour-kitchen", "alt": "CGI of a kitchen in an infill extension in Canterbury", "cap": "Infill extension · Canterbury · CGI"},
   },
+  {
+    "slug": "margate",
+    "town": "Margate",
+    "council": "Thanet District Council",
+    "title": "Architectural Design & Planning Drawings in Margate",
+    "desc": "Architectural design and planning drawings in Margate and Cliftonville: extensions, loft conversions, flat and HMO conversions, building regulations drawings. Free 15-minute call.",
+    "lead": "Margate's big Victorian and Edwardian houses, seafront terraces and Cliftonville villas make for some of the most rewarding projects in Kent. We design extensions, loft conversions and conversions across the town and take the application through Thanet District Council.",
+    "nearby": ["Cliftonville", "Westbrook", "Garlinge", "Northdown", "Palm Bay", "Westgate-on-Sea", "Westwood"],
+    "planning": [
+      ("Conservation areas", "The old town, the seafront and much of Cliftonville sit in conservation areas, including Dalby Square, Ethelbert Road and Northdown Road. Windows, roofs, front boundaries and extensions visible from the street get extra scrutiny, so we design with that in mind from the outset."),
+      ("Flats and HMOs", "An Article 4 direction covers the whole of Thanet, so turning a family house into a small HMO needs planning permission. Council policy also looks hard at sub-dividing houses into flats in parts of Margate and Cliftonville. We check what's realistic before you buy or spend on drawings."),
+      ("New homes near the coast", "New homes in Thanet pay a small per-bedroom contribution to protect the Thanet Coast's wintering birds. We include it in the application so it doesn't hold up validation."),
+    ],
+    "faq": [
+      ("Can I convert my house into flats in Margate?", "Sometimes. It depends on the street, the size of the house and the flats you'd create. We'll look at the property and the council's policies on a free call and give you a straight answer before you commit."),
+      ("Do I need planning permission for a loft conversion in Cliftonville?", "If the house is in a conservation area, roof alterations facing the street usually need permission. Elsewhere many lofts fall under permitted development. We'll confirm which applies to your house."),
+      ("Which council handles applications in Margate?", "Thanet District Council decides planning applications for Margate, Cliftonville, Westgate-on-Sea and the rest of the district. We submit and deal with the case officer for you."),
+    ],
+    "project": None,
+  },
+  {
+    "slug": "ramsgate",
+    "town": "Ramsgate",
+    "council": "Thanet District Council",
+    "title": "Architectural Design & Planning Drawings in Ramsgate",
+    "desc": "Architectural design and planning drawings in Ramsgate: extensions, loft conversions, listed buildings, conservation areas and building regulations drawings. Free 15-minute call.",
+    "lead": "Ramsgate has some of the finest Regency and Victorian streets on the Kent coast, around the Royal Harbour and along the cliff tops. We design extensions, alterations and conversions that respect that character and handle the application with Thanet District Council.",
+    "nearby": ["Royal Harbour", "Pegwell", "Newington", "Nethercourt", "Westwood", "Minster", "Cliffsend"],
+    "planning": [
+      ("Conservation areas and Article 4", "Much of the town is in the Ramsgate, Royal Esplanade or Montefiore conservation areas. On parts of streets such as Nelson Crescent, Paragon, Albion Hill and Prospect Terrace, an Article 4 direction means even windows, doors and roof coverings need permission. We check your address first."),
+      ("Listed buildings", "Ramsgate has a large number of listed buildings, and works inside as well as outside need listed building consent. We prepare the heritage statement and detail the work so it's acceptable to the conservation officer."),
+      ("HMOs and new homes", "An Article 4 direction across Thanet means a family house to small HMO change needs planning permission, and new homes pay a small coastal habitat contribution. Both are built into our applications."),
+    ],
+    "faq": [
+      ("Do I need permission to change windows in Ramsgate?", "In many central and harbourside streets, yes. The conservation areas and an Article 4 direction remove the usual freedom to change windows and doors. We'll check your property and prepare the application if needed."),
+      ("Can you help with a listed building in Ramsgate?", "Yes. We survey the building, prepare drawings and a heritage statement, and apply for listed building consent alongside planning where both are needed."),
+      ("How long does planning take with Thanet District Council?", "The council aims to decide householder applications within eight weeks of validation. Listed building consent runs to a similar timescale, and we submit both together."),
+    ],
+    "project": None,
+  },
+  {
+    "slug": "broadstairs",
+    "town": "Broadstairs",
+    "council": "Thanet District Council",
+    "title": "Architectural Design & Planning Drawings in Broadstairs",
+    "desc": "Architectural design and planning drawings in Broadstairs and St Peter's: extensions, loft conversions, new homes and building regulations drawings. Free 15-minute call.",
+    "lead": "From the seafront around Viking Bay to the 1930s houses inland, Broadstairs has a strong character people want to protect. We design extensions, loft conversions and new homes that suit the town and take them through Thanet District Council.",
+    "nearby": ["St Peter's", "Reading Street", "Kingsgate", "Dumpton", "Joss Bay", "Westwood"],
+    "planning": [
+      ("Neighbourhood plan", "Broadstairs and St Peter's has its own neighbourhood plan, which carries real weight in planning decisions alongside Thanet's Local Plan. It sets expectations on design and character, and we reference it directly in applications here."),
+      ("Conservation areas", "The town centre and seafront, St Peter's village, Reading Street and Kingsgate are all conservation areas. Permitted development is narrower there, particularly for roof and street-facing changes."),
+      ("Coastal and HMO rules", "New homes pay a small per-bedroom contribution towards protecting the Thanet Coast, and an Article 4 direction across Thanet means converting a house to a small HMO needs planning permission."),
+    ],
+    "faq": [
+      ("Do I need planning permission for an extension in Broadstairs?", "Many single-storey rear extensions are permitted development, but not in a conservation area in every case, and not where earlier permissions removed those rights. We'll tell you which route applies on the free call."),
+      ("Does the neighbourhood plan affect my application?", "Yes. The council must take it into account, so applications in Broadstairs and St Peter's are stronger when the design and statement show how they meet its policies."),
+      ("Can you visit the property?", "Yes. We're 20 minutes away in Whitstable and survey with a 3D scanner, so one visit captures everything we need."),
+    ],
+    "project": None,
+  },
+  {
+    "slug": "birchington",
+    "town": "Birchington",
+    "council": "Thanet District Council",
+    "title": "Architectural Design & Planning Drawings in Birchington",
+    "desc": "Architectural design and planning drawings in Birchington and Minnis Bay: bungalow extensions, dormers, porches, garden buildings and building regulations drawings. Free 15-minute call.",
+    "lead": "Birchington is full of bungalows and chalet homes with plenty of potential for extending up or out. We design dormers, extensions, porches and garden buildings across the village and handle the application with Thanet District Council.",
+    "nearby": ["Minnis Bay", "Westgate-on-Sea", "Acol", "St Nicholas at Wade", "Epple Bay", "Margate"],
+    "planning": [
+      ("Bungalows and dormers", "Adding a first floor or large dormers to a bungalow is the most common project here. Officers look at the effect on the street and on neighbours' light and privacy, so we test the massing early and show it in 3D before you commit."),
+      ("Birchington conservation area", "The village centre is a conservation area with a recently adopted appraisal. Extensions and alterations there need more care with materials and visibility."),
+      ("Porches, outbuildings and permitted development", "Many porches and garden rooms need no planning permission if they stay within size and height limits, and a Lawful Development Certificate can confirm it. We'll tell you which side of the line your plans fall."),
+    ],
+    "faq": [
+      ("Can I add a first floor to my bungalow in Birchington?", "Often, yes, with planning permission. Success depends on the height, how it sits with neighbouring homes and overlooking. We'll test options before full drawings."),
+      ("Do I need planning permission for a garden room?", "Usually not if it's single-storey, within the height limits for its distance from the boundary, and not used as a separate home. We can confirm it with a Lawful Development Certificate."),
+      ("Which council handles Birchington applications?", "Thanet District Council. We prepare and submit the application and deal with the case officer until a decision."),
+    ],
+    "project": None,
+  },
 ]
 
 SERVICES = [
@@ -111,7 +191,6 @@ section{padding:48px 0;border-bottom:1px solid var(--line)}
 figure{margin:0}figcaption{font-size:13px;color:var(--muted);margin-top:8px}
 blockquote{margin:22px 0 0;padding-left:16px;border-left:3px solid var(--oak);font-size:17px;max-width:62ch}blockquote cite{display:block;font-style:normal;font-size:13px;color:var(--muted);margin-top:8px}
 details{border-top:1px solid var(--line);padding:14px 0}details:last-child{border-bottom:1px solid var(--line)}summary{cursor:pointer;font-weight:600}details p{margin:10px 0 0;max-width:68ch}
-.others a{margin-right:16px}
 footer{background:var(--ink);color:color-mix(in srgb,var(--paper) 72%,transparent);font-size:13px;padding:28px 0 40px}footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 @media (max-width:560px){.top .cta{padding:9px 12px;font-size:13px}}
 """
@@ -167,7 +246,7 @@ def page(a):
     points = "".join(f"<div><h3>{esc(h)}</h3><p>{esc(p)}</p></div>" for h, p in a["planning"])
     nearby = "".join(f"<li>{esc(n)}</li>" for n in a["nearby"])
     faq = "".join(f"<details><summary>{esc(q)}</summary><p>{esc(ans)}</p></details>" for q, ans in a["faq"])
-    others = "".join(f'<a href="/architectural-design-{o["slug"]}/">{esc(o["town"])}</a>' for o in AREAS if o is not a)
+    others = ", ".join(f'<a href="/architectural-design-{o["slug"]}/">{esc(o["town"])}</a>' for o in AREAS if o is not a)
     work = ""
     if a.get("project"):
         p = a["project"]
