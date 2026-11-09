@@ -11,6 +11,9 @@ import html, json, os
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = "https://forty-onecd.co.uk"
+# Month the planning facts on every town page were last checked against their sources.
+# The monthly planning-facts check updates this (and any changed facts) after Lewis approves.
+REVIEWED = "November 2026"
 PHONE = "07404 611105"
 WA = "https://wa.me/447404611105?text=Hi%20Lewis%2C%20I%27d%20like%20to%20talk%20about%20a%20project."
 
@@ -186,6 +189,9 @@ section{padding:48px 0;border-bottom:1px solid var(--line)}
 .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
 .card{background:var(--sheet);border:1px solid var(--line);padding:18px}.card p{margin:0;color:var(--muted);font-size:15px}
 .points{display:grid;gap:22px}.points p{margin:0;max-width:68ch}
+.policies{margin-top:32px;background:var(--sheet);border:1px solid var(--line);padding:20px}.policies .plan{margin:0 0 12px;color:var(--muted);font-size:15px;max-width:68ch}
+.policies ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}.policies li{display:grid;gap:2px;border-top:1px solid var(--line);padding-top:12px}.policies li b{font-weight:600;font-size:15px}.policies li span{font-size:15px;color:var(--muted)}
+.reviewed{margin-top:16px;font-size:13px;color:var(--muted)}.reviewed a{color:var(--muted)}
 .nearby{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0;list-style:none}.nearby li{border:1px solid var(--line);padding:4px 12px;font-size:14px}
 figure{margin:0}figcaption{font-size:13px;color:var(--muted);margin-top:8px}
 blockquote{margin:22px 0 0;padding-left:16px;border-left:3px solid var(--oak);font-size:17px;max-width:62ch}blockquote cite{display:block;font-style:normal;font-size:13px;color:var(--muted);margin-top:8px}
@@ -253,6 +259,10 @@ def page(a):
     url = f"{SITE}/architectural-design-{a['slug']}/"
     services = "".join(f'<div class="card"><h3>{esc(n)}</h3><p>{esc(d)}</p></div>' for n, d in SERVICES)
     points = "".join(f"<div><h3>{esc(h)}</h3><p>{esc(p)}</p></div>" for h, p in a["planning"])
+    c = COUNCILS[a["council"]]
+    pols = "".join(f'<li><b>{esc(r)}</b><span>{esc(d)}</span></li>' for r, d in c["policies"])
+    srcs = c["sources"] + a.get("sources", [])
+    srcs_html = " · ".join(f'<a href="{esc(u)}" rel="noopener" target="_blank">{esc(l)}</a>' for l, u in srcs)
     nearby = "".join(f"<li>{esc(n)}</li>" for n in a["nearby"])
     faq = "".join(f"<details><summary>{esc(q)}</summary><p>{esc(ans)}</p></details>" for q, ans in a["faq"])
     others = ", ".join(f'<a href="/architectural-design-{o["slug"]}/">{esc(o["town"])}</a>' for o in AREAS if o is not a)
@@ -301,6 +311,8 @@ def page(a):
 <section><div class="wrap">
 <span class="label">Local knowledge</span><h2>Planning in {esc(t)}: what to know</h2>
 <div class="points">{points}</div>
+<div class="policies"><h3>Local policies we design to</h3><p class="plan">{esc(c["plan"])}</p><ul>{pols}</ul></div>
+<p class="reviewed">Planning information last reviewed {REVIEWED}. Sources: {srcs_html}</p>
 </div></section>
 {work_sec}
 <section><div class="wrap">
